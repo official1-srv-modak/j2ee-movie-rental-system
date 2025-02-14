@@ -10,5 +10,5 @@ import java.util.List;
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findByTitle(String title);
     List<Movie> findByGenre(String genre);
-    Integer findAvailableMoviesById(Long id);
+    List<Movie> findByAvailableCopiesGreaterThan(int copies);
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rent a Movie</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Rent a Movie</h1>
+    <form th:action="@{/rentals/rent}" method="post">
+        <label>Customer ID:</label>
+        <input type="number" name="customerId" required>
+
+        <label>Movie ID:</label>
+        <input type="number" name="movieId" required>
+
+        <button type="submit">Rent Movie</button>
+    </form>
+</div>
+</body>
+</html>

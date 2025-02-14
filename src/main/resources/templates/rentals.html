@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Rental History</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+  <h1>Rental History</h1>
+  <table>
+    <tr>
+      <th>Customer Name</th>
+      <th>Movie Title</th>
+      <th>Rental Date</th>
+      <th>Return Date</th>
+      <th>Action</th>
+    </tr>
+    <tr th:each="rental : ${rentals}">
+      <td th:text="${rental.customer.name}"></td>
+      <td th:text="${rental.movie.title}"></td>
+      <td th:text="${rental.rentalDate}"></td>
+      <td th:text="${rental.returnDate} ?: 'Not Returned'"></td>
+      <td>
+        <form th:action="@{/rentals/return/{rentalId}(rentalId=${rental.id})}" method="post">
+          <button type="submit" th:if="${rental.returnDate == null}">Return Movie</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
